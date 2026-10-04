@@ -1,0 +1,7 @@
+GET https://app.team1.test/api/status  x6
+ 1  17:30:19  HTTP 200  edge=edge-mac2(10.7.20.28)  X-Backend: A   upstream=10.7.20.243:3001
+ 2  17:30:20  HTTP 200  edge=edge-mac2(10.7.20.28)  X-Backend: B   upstream=10.7.8.144:3002
+ 3  17:30:20  HTTP 200  edge=edge-mac2(10.7.20.28)  X-Backend: A   upstream=10.7.20.243:3001
+ 4  17:30:21  HTTP 200  edge=edge-mac2(10.7.20.28)  X-Backend: B   upstream=10.7.8.144:3002
+ 5  17:30:21  HTTP 200  edge=edge-mac2(10.7.20.28)  X-Backend: A   upstream=10.7.20.243:3001
+ 6  17:30:22  HTTP 200  edge=edge-mac2(10.7.20.28)  X-Backend: B   upstream=10.7.8.144:3002

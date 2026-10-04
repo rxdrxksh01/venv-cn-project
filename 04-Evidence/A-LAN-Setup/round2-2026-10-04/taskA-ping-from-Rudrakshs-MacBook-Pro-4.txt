@@ -1,0 +1,31 @@
+Ping test from Rudraksh’s MacBook Pro (4) (10.7.6.171) at Sun Oct  4 22:56:38 IST 2026
+
+### Mac2 (10.7.22.181)
+PING 10.7.22.181 (10.7.22.181): 56 data bytes
+64 bytes from 10.7.22.181: icmp_seq=0 ttl=64 time=104.776 ms
+64 bytes from 10.7.22.181: icmp_seq=1 ttl=64 time=12.101 ms
+64 bytes from 10.7.22.181: icmp_seq=2 ttl=64 time=45.722 ms
+
+--- 10.7.22.181 ping statistics ---
+3 packets transmitted, 3 packets received, 0.0% packet loss
+round-trip min/avg/max/stddev = 12.101/54.200/104.776/38.306 ms
+
+### Mac3 (10.7.20.243)
+PING 10.7.20.243 (10.7.20.243): 56 data bytes
+64 bytes from 10.7.20.243: icmp_seq=0 ttl=64 time=6.729 ms
+64 bytes from 10.7.20.243: icmp_seq=1 ttl=64 time=28.885 ms
+64 bytes from 10.7.20.243: icmp_seq=2 ttl=64 time=208.737 ms
+
+--- 10.7.20.243 ping statistics ---
+3 packets transmitted, 3 packets received, 0.0% packet loss
+round-trip min/avg/max/stddev = 6.729/81.450/208.737/90.459 ms
+
+### Mac4 (10.7.8.144)
+PING 10.7.8.144 (10.7.8.144): 56 data bytes
+64 bytes from 10.7.8.144: icmp_seq=0 ttl=64 time=56.950 ms
+64 bytes from 10.7.8.144: icmp_seq=1 ttl=64 time=6.410 ms
+64 bytes from 10.7.8.144: icmp_seq=2 ttl=64 time=7.188 ms
+
+--- 10.7.8.144 ping statistics ---
+3 packets transmitted, 3 packets received, 0.0% packet loss
+round-trip min/avg/max/stddev = 6.410/23.516/56.950/23.644 ms

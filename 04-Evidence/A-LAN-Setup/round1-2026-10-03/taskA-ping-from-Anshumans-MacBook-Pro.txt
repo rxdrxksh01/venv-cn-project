@@ -1,0 +1,27 @@
+Ping test from Anshuman’s MacBook Pro (10.7.20.28) at Sat Oct  3 16:10:49 IST 2026
+
+### Mac1 (10.7.6.171)
+PING 10.7.6.171 (10.7.6.171): 56 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.7.6.171 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+
+### Mac3 (10.7.20.243)
+PING 10.7.20.243 (10.7.20.243): 56 data bytes
+Request timeout for icmp_seq 0
+Request timeout for icmp_seq 1
+
+--- 10.7.20.243 ping statistics ---
+3 packets transmitted, 0 packets received, 100.0% packet loss
+
+### Mac4 (10.7.8.144)
+PING 10.7.8.144 (10.7.8.144): 56 data bytes
+64 bytes from 10.7.8.144: icmp_seq=0 ttl=64 time=40.846 ms
+64 bytes from 10.7.8.144: icmp_seq=1 ttl=64 time=71.506 ms
+64 bytes from 10.7.8.144: icmp_seq=2 ttl=64 time=108.897 ms
+
+--- 10.7.8.144 ping statistics ---
+3 packets transmitted, 3 packets received, 0.0% packet loss
+round-trip min/avg/max/stddev = 40.846/73.750/108.897/27.827 ms

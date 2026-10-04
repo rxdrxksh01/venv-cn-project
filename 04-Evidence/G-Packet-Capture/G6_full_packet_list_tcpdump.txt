@@ -1,0 +1,35 @@
+# Full packet list of G0_mac4_capture_taskG-flow-tls12-164445.pcap (tcpdump -nr, 31 packets)
+# Captured on Mac 4 (10.7.8.144) en0, 3 Oct 2026. DNS to Mac 1 (10.7.6.171:53), HTTPS to Mac 2 (10.7.20.28:443).
+# Flags: [S]=SYN [S.]=SYN-ACK [.]=ACK [P.]=PUSH+ACK [F.]=FIN  E/W = ECN negotiation
+
+16:44:49.062769 IP 10.7.8.144.50504 > 10.7.6.171.53: 9135+ A? mmx-ds.cdn.whatsapp.net. (41)
+16:44:49.089955 IP 10.7.6.171.53 > 10.7.8.144.50504: 9135 1/0/0 A 57.144.147.32 (57)
+16:44:50.769452 IP 10.7.8.144.56969 > 10.7.6.171.53: 18125+ PTR? lb._dns-sd._udp.0.0.7.10.in-addr.arpa. (55)
+16:44:50.769744 IP 10.7.8.144.55203 > 10.7.6.171.53: 7400+ PTR? b._dns-sd._udp.0.0.7.10.in-addr.arpa. (54)
+16:44:50.769904 IP 10.7.8.144.60760 > 10.7.6.171.53: 39107+ PTR? db._dns-sd._udp.0.0.7.10.in-addr.arpa. (55)
+16:44:50.827072 IP 10.7.6.171.53 > 10.7.8.144.55203: 7400 NXDomain 0/0/0 (54)
+16:44:50.828272 IP 10.7.6.171.53 > 10.7.8.144.60760: 39107 NXDomain 0/0/0 (55)
+16:44:50.828275 IP 10.7.6.171.53 > 10.7.8.144.56969: 18125 NXDomain 0/0/0 (55)
+16:44:51.815382 IP 10.7.8.144.56376 > 10.7.6.171.53: 35673+ A? app.team1.test. (32)
+16:44:51.822571 IP 10.7.6.171.53 > 10.7.8.144.56376: 35673* 1/0/0 A 10.7.20.28 (48)
+16:44:51.824137 IP 10.7.8.144.64222 > 10.7.20.28.443: Flags [SEW], seq 3599173569, win 65535, options [mss 1460,nop,wscale 6,nop,nop,TS val 4174262942 ecr 0,sackOK,eol], length 0
+16:44:51.877006 IP 10.7.20.28.443 > 10.7.8.144.64222: Flags [S.E], seq 4091484025, ack 3599173570, win 65535, options [mss 1460,nop,wscale 6,nop,nop,TS val 1703489502 ecr 4174262942,sackOK,eol], length 0
+16:44:51.877146 IP 10.7.8.144.64222 > 10.7.20.28.443: Flags [.], ack 1, win 2059, options [nop,nop,TS val 4174262995 ecr 1703489502], length 0
+16:44:51.878602 IP 10.7.8.144.64222 > 10.7.20.28.443: Flags [P.], seq 1:229, ack 1, win 2059, options [nop,nop,TS val 4174262997 ecr 1703489502], length 228
+16:44:51.883319 IP 10.7.20.28.443 > 10.7.8.144.64222: Flags [.], ack 1, win 2059, options [nop,nop,TS val 1703489509 ecr 4174262995], length 0
+16:44:51.885882 IP 10.7.20.28.443 > 10.7.8.144.64222: Flags [.], ack 229, win 2056, options [nop,nop,TS val 1703489510 ecr 4174262997], length 0
+16:44:51.887244 IP 10.7.20.28.443 > 10.7.8.144.64222: Flags [P.], seq 1:1367, ack 229, win 2056, options [nop,nop,TS val 1703489513 ecr 4174262997], length 1366
+16:44:51.887298 IP 10.7.8.144.64222 > 10.7.20.28.443: Flags [.], ack 1367, win 2038, options [nop,nop,TS val 4174263006 ecr 1703489513], length 0
+16:44:51.889027 IP 10.7.8.144.64222 > 10.7.20.28.443: Flags [P.], seq 229:314, ack 1367, win 2048, options [nop,nop,TS val 4174263007 ecr 1703489513], length 85
+16:44:51.893432 IP 10.7.20.28.443 > 10.7.8.144.64222: Flags [.], ack 314, win 2055, options [nop,nop,TS val 1703489519 ecr 4174263007], length 0
+16:44:51.895820 IP 10.7.20.28.443 > 10.7.8.144.64222: Flags [P.], seq 1367:1410, ack 314, win 2055, options [nop,nop,TS val 1703489521 ecr 4174263007], length 43
+16:44:51.895863 IP 10.7.8.144.64222 > 10.7.20.28.443: Flags [.], ack 1410, win 2048, options [nop,nop,TS val 4174263014 ecr 1703489521], length 0
+16:44:51.896175 IP 10.7.8.144.64222 > 10.7.20.28.443: Flags [P.], seq 314:422, ack 1410, win 2048, options [nop,nop,TS val 4174263015 ecr 1703489521], length 108
+16:44:51.908123 IP 10.7.20.28.443 > 10.7.8.144.64222: Flags [.], ack 422, win 2054, options [nop,nop,TS val 1703489534 ecr 4174263015], length 0
+16:44:51.950991 IP 10.7.20.28.443 > 10.7.8.144.64222: Flags [P.], seq 1410:1903, ack 422, win 2054, options [nop,nop,TS val 1703489565 ecr 4174263015], length 493
+16:44:51.951227 IP 10.7.8.144.64222 > 10.7.20.28.443: Flags [.], ack 1903, win 2041, options [nop,nop,TS val 4174263070 ecr 1703489565], length 0
+16:44:51.951611 IP 10.7.8.144.64222 > 10.7.20.28.443: Flags [P.], seq 422:445, ack 1903, win 2048, options [nop,nop,TS val 4174263070 ecr 1703489565], length 23
+16:44:51.952531 IP 10.7.8.144.64222 > 10.7.20.28.443: Flags [F.], seq 445, ack 1903, win 2048, options [nop,nop,TS val 4174263071 ecr 1703489565], length 0
+16:44:51.966733 IP 10.7.20.28.443 > 10.7.8.144.64222: Flags [.], ack 445, win 2054, options [nop,nop,TS val 1703489592 ecr 4174263070], length 0
+16:44:51.966737 IP 10.7.20.28.443 > 10.7.8.144.64222: Flags [.], ack 446, win 2054, options [nop,nop,TS val 1703489592 ecr 4174263071], length 0
+16:44:51.966739 IP 10.7.20.28.443 > 10.7.8.144.64222: Flags [R.], seq 1903, ack 446, win 2054, length 0

@@ -1,0 +1,18 @@
+Hostname        : Bineet’s MacBook Pro
+Date            : Sat Oct  3 16:10:47 IST 2026
+Active interface: en0
+IPv4 address    : 10.7.20.243
+Subnet mask     : 255.255.224.0
+Default gateway : 10.7.0.1
+MAC address     : 6a:aa:26:00:50:81
+DNS servers     : There aren't any DNS Servers set on Wi-Fi. 
+
+--- ifconfig en0 ---
+en0: flags=8863<UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST> mtu 1500
+	options=6460<TSO4,TSO6,CHANNEL_IO,PARTIAL_CSUM,ZEROINVERT_CSUM>
+	ether 6a:aa:26:00:50:81
+	inet6 fe80::1c07:f90e:d736:1162%en0 prefixlen 64 secured scopeid 0xb 
+	inet 10.7.20.243 netmask 0xffffe000 broadcast 10.7.31.255
+	nd6 options=201<PERFORMNUD,DAD>
+	media: autoselect
+	status: active

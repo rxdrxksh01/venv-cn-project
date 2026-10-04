@@ -1,0 +1,18 @@
+Hostname        : Pranshu’s MacBook Pro
+Date            : Sat Oct  3 16:11:15 IST 2026
+Active interface: en0
+IPv4 address    : 10.7.8.144
+Subnet mask     : 255.255.224.0
+Default gateway : 10.7.0.1
+MAC address     : 9a:50:36:5c:01:e9
+DNS servers     : There aren't any DNS Servers set on Wi-Fi. 
+
+--- ifconfig en0 ---
+en0: flags=8863<UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST> mtu 1500
+	options=6460<TSO4,TSO6,CHANNEL_IO,PARTIAL_CSUM,ZEROINVERT_CSUM>
+	ether 9a:50:36:5c:01:e9
+	inet6 fe80::10ec:de51:75be:855a%en0 prefixlen 64 secured scopeid 0xb 
+	inet 10.7.8.144 netmask 0xffffe000 broadcast 10.7.31.255
+	nd6 options=201<PERFORMNUD,DAD>
+	media: autoselect
+	status: active
