@@ -4,3 +4,4 @@
 **/*.p12
 **/tls.pem
 03-Source-Code/edge/certs/
+**/__pycache__/
