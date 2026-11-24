@@ -15,6 +15,9 @@ case "${DNS_TTL:-30}" in
 esac
 [ "${DNS_TTL:-30}" -le 86400 ] || { echo 'DNS_TTL must be <= 86400' >&2; exit 1; }
 
+printf '%s ttl-demo.team1.test\n' "${TTL_TARGET_IP:-$EDGE_IP}" > /tmp/project-ttl.hosts
+printf '%s app.team1.test api.team1.test\n' "$EDGE_IP" > /tmp/project-edge.hosts
+
 cat > /tmp/project-dns.conf <<EOF
 port=53
 interface=eth0
@@ -27,10 +30,9 @@ domain-needed
 bogus-priv
 local=/team1.test/
 local-ttl=${DNS_TTL:-30}
-host-record=app.team1.test,${EDGE_IP}
-host-record=api.team1.test,${EDGE_IP}
+addn-hosts=/tmp/project-edge.hosts
 host-record=edge.team1.test,${EDGE_IP}
-host-record=ttl-demo.team1.test,${TTL_TARGET_IP:-$EDGE_IP}
+addn-hosts=/tmp/project-ttl.hosts
 log-queries=extra
 log-facility=-
 EOF

@@ -115,8 +115,9 @@ Keep a terminal open with DNS logs to distinguish fresh queries from cached answ
 
 1. Both resolvers initially answer `ttl-demo.team1.test` with the edge IP and TTL 30.
 2. On a client flush cache, then run `dscacheutil -q host -a name ttl-demo.team1.test`.
-3. On **both DNS hosts**, set `TTL_TARGET_IP` in `.env` to another available Mac's IP.
-   Apply promptly with `docker compose up -d --force-recreate --wait`.
+3. On **both DNS hosts**, run `sh set-ttl-record.sh NEW_IP` with another available
+   Mac's IP. This reloads a hosts file with SIGHUP without restarting the container.
+   It requires the updated image built with `docker compose up -d --build --wait`.
    Do not flush the client during this part of the experiment.
 4. Direct `dig @primary ttl-demo.team1.test +noall +answer` and `dig @backup ...`
    should show the new answer. Repeated client `dscacheutil` lookups may still show
@@ -125,7 +126,20 @@ Keep a terminal open with DNS logs to distinguish fresh queries from cached answ
 5. For a separate manual-flush experiment, prime the client cache again, change the
    record on both servers, then flush with the two sudo commands above. The next
    client lookup should get the changed value immediately.
-6. Clear `TTL_TARGET_IP` and recreate on both hosts to restore.
+6. Run `sh set-ttl-record.sh ORIGINAL_IP` on both hosts to restore. These runtime
+   changes last until restart; `.env` sets the record's startup value. If a test
+   client temporarily uses only the primary to isolate caching, make the change
+   there only, then restore the client's two DNS addresses after the test.
+
+For real edge cutover (Extension E), after rebuilding the updated DNS image on
+both Macs, run `sh set-edge-record.sh STANDBY_IP` on **both DNS hosts**. This
+updates app/api together without restarting DNS. Use the original edge IP to
+roll back. The override lasts until restart, when `.env` EDGE_IP is restored.
+The stable infrastructure name edge.team1.test is used by the healthcheck and
+is not changed by this helper. Build and verify UDP/TCP reachability before the
+timed cutover. If Docker's host UDP forwarding becomes stale after recreation,
+investigate that separately before collecting timed evidence; restarting Docker
+Desktop affects all containers on that Mac and may restart other applications.
 
 Use `app.team1.test` for the real edge cutover (Extension E) in the Phase 2 guide.
 Do not claim this DNS-only test demonstrates HTTPS migration. Client caching is
