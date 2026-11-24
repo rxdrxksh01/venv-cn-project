@@ -1,0 +1,18 @@
+services:
+  dns:
+    build: .
+    image: cn-team1-dns:local
+    restart: unless-stopped
+    ports:
+      - "${DNS_BIND_IP:?Set this Mac's LAN IP in .env}:${DNS_PORT:-53}:53/udp"
+      - "${DNS_BIND_IP:?Set this Mac's LAN IP in .env}:${DNS_PORT:-53}:53/tcp"
+    environment:
+      EDGE_IP: ${EDGE_IP:?Set the current nginx Mac LAN IP in .env}
+      TTL_TARGET_IP: ${TTL_TARGET_IP:-}
+      DNS_TTL: ${DNS_TTL:-30}
+      UPSTREAM_DNS: ${UPSTREAM_DNS:-1.1.1.1}
+    healthcheck:
+      test: ["CMD-SHELL", "dig +short +time=1 +tries=1 @127.0.0.1 edge.team1.test | grep -Fx \"$$EDGE_IP\""]
+      interval: 5s
+      timeout: 3s
+      retries: 3

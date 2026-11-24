@@ -1,0 +1,8 @@
+User-provided backup DNS logs correlated with Bineet cache-flushed lookup at 23:21:05 IST, 24 November 2026. Primary DNS had been stopped in the supplied screenshot; client configured both resolver IPs.
+
+dnsmasq[1]: 317 172.27.0.1/58178 query[AAAA] api.team1.test from 172.27.0.1
+dnsmasq[1]: 317 172.27.0.1/58178 config api.team1.test is NODATA-IPv6
+dnsmasq[1]: 318 172.27.0.1/56818 query[A] api.team1.test from 172.27.0.1
+dnsmasq[1]: 318 172.27.0.1/56818 config api.team1.test is 10.7.31.231
+
+The backup container logs a Docker-side source address, not necessarily the original client IP. Its healthcheck at that time queried app.team1.test, so the api.team1.test query is distinct from automatic health checks. macOS resolver selection is adaptive; no strict primary/secondary ordering is claimed.

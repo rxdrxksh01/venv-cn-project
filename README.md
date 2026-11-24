@@ -1,13 +1,40 @@
-# Team .venv — Private Network Service Platform · Phase 1 Deliverables
+# Team .venv — Private Network Service Platform
 
 Computer Networks course project. Four macOS laptops on one Wi-Fi network serve `https://app.team1.test`
 through a private DNS server, an nginx TLS edge / load balancer and two REST backends. No cloud.
 
 Team name: **.venv** · private DNS zone: **team1.test** (the zone name used in all configs and evidence).
 
-**Phase 2 preparation:** [Phase 1 explanation and Phase 2 runbook](03-Source-Code/PHASE2-GUIDE.md)
-and [Docker DNS replacement / backup setup](03-Source-Code/docker-dns/README.md).
-The IPs and results below describe the historical Phase 1 deployment.
+## Phase 2 — demonstrated 24–25 November 2026
+
+Three available Macs retain the native nginx/Python platform. Docker replaces the
+absent DNS laptop and provides backup DNS on a second physical Mac.
+
+| Member | Current LAN IP | Roles |
+|---|---|---|
+| Anshuman | 10.7.31.231 | Primary Docker DNS + original nginx edge |
+| Bineet | 10.7.1.112 | Backend A :3001 + client |
+| Vridhi (hostname Pranshus-MacBook-Pro) | 10.7.2.240 | Backup Docker DNS + Backend B :3002 + temporary standby edge |
+
+Extensions A–E have recorded demonstrations, including rollback. The actual
+faculty-injected troubleshooting challenge and individual viva remain pending.
+Firewall rules and standby nginx were rolled back after testing; they are not
+claimed to be continuously active. DHCP addresses must be checked before reuse.
+
+| Start here | File |
+|---|---|
+| Results and learning summaries | [Phase 2 report](05-Phase2-Final-Report/REPORT.md) / [printable PDF](output/pdf/Phase2-Final-Report.pdf) |
+| Evaluation-day commands | [Demo checklist](05-Phase2-Final-Report/DEMO-CHECKLIST.md) |
+| Updated topology and inventory | [Phase 2 architecture](01-Architecture-Document/Phase2-Architecture.md) |
+| Requirement-to-evidence map | [Phase 2 evidence index](04-Evidence/Phase2/EVIDENCE-INDEX.md) |
+| Sanitized configuration snapshots | [Phase 2 configuration bundle](02-Configuration-Bundle/Phase2/README.md) |
+| Explanation and detailed procedure | [Phase 1 understanding / Phase 2 guide](03-Source-Code/PHASE2-GUIDE.md) |
+| Docker DNS setup / live record helpers | [DNS runbook](03-Source-Code/docker-dns/README.md) |
+
+## Phase 1 — historical October deployment
+
+The original four-Mac platform and evidence are preserved below. The IPs in this
+section describe the October deployment, not the current three-Mac setup.
 
 | Machine | Member | Role | IP |
 |---|---|---|---|

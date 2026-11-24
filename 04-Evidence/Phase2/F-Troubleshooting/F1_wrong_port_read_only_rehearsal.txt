@@ -1,0 +1,60 @@
+READ-ONLY TROUBLESHOOTING REHEARSAL - not the faculty-injected challenge
+Recorded 2026-11-25T00:36:21
+Fault: request sent to unused HTTPS port 8443; no server configuration changed.
+
+$ dig @10.7.31.231 app.team1.test +short +time=2 +tries=1
+10.7.31.231
+
+
+Exit code: 0
+
+$ dig @10.7.2.240 app.team1.test +short +time=2 +tries=1
+10.7.31.231
+
+
+Exit code: 0
+
+$ curl -v --noproxy * --connect-timeout 3 --max-time 5 https://app.team1.test:8443/api/status
+
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0* Host app.team1.test:8443 was resolved.
+* IPv6: (none)
+* IPv4: 10.7.31.231
+*   Trying 10.7.31.231:8443...
+* connect to 10.7.31.231 port 8443 from 10.7.31.231 port 64848 failed: Connection refused
+* Failed to connect to app.team1.test port 8443 after 24 ms: Couldn't connect to server
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+* Closing connection
+curl: (7) Failed to connect to app.team1.test port 8443 after 24 ms: Couldn't connect to server
+
+Exit code: 7
+
+$ curl -sS --noproxy * --max-time 10 -D - https://app.team1.test/api/status
+HTTP/2 200 
+server: nginx/1.31.6
+date: Tue, 24 Nov 2026 19:06:21 GMT
+content-type: application/json
+content-length: 233
+x-backend: B
+cache-control: no-store
+x-edge: edge-mac2
+x-upstream-addr: 10.7.2.240:3002
+
+{
+  "backend": "B",
+  "status": "ok",
+  "host": "Pranshus-MacBook-Pro.local",
+  "port": 3002,
+  "tcp_peer": "10.7.31.231:64850",
+  "x_forwarded_for": "10.7.31.231",
+  "host_header": "app.team1.test",
+  "time": "2026-11-25T00:36:21"
+}
+
+Exit code: 0
+
+Diagnosis: both resolvers returned the correct edge IP. Port 8443 could not connect; the valid HTTPS service on 443 returned an application response. This isolates the rehearsal fault to the destination TCP port, rather than DNS or application availability.
+The actual faculty fault, team diagnosis and outcome must be added during evaluation.

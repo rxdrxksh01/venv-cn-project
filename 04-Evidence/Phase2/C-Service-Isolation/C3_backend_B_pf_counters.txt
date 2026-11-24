@@ -1,0 +1,14 @@
+User-supplied PF counter output, Vridhi/Backend B, 24 November 2026 IST.
+Anchor: com.apple/cn-team1-b
+
+@0 pass in quick on en0 inet proto tcp from 10.7.31.231 to 10.7.2.240 port = 3002 flags S/SA keep state
+[ Evaluations: 10255  Packets: 52  Bytes: 7890  States: 4 ]
+@1 block return in quick on en0 inet proto tcp from any to 10.7.2.240 port = 3002
+[ Evaluations: 1007  Packets: 2  Bytes: 128  States: 0 ]
+
+Observed tests:
+- Edge direct HTTP to B succeeded (response time field 2026-11-24T23:53:40).
+- Bineet direct HTTP to B failed with curl exit 7.
+- Bineet HTTPS through nginx succeeded, served by B (response time field 2026-11-24T23:54:13).
+  Backend saw TCP peer 10.7.31.231 and X-Forwarded-For 10.7.1.112.
+- This is evidence for Backend B only. Rollback result and Backend A isolation are not yet supplied.

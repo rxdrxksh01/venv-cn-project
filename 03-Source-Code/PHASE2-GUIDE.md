@@ -58,7 +58,7 @@ nginx has round robin by default. `max_fails=1 fail_timeout=10s` plus
 They do not run a background health probe. After the exclusion interval nginx can
 try the recovered backend on subsequent traffic. Exact A/B alternation is not a
 universal guarantee with multiple workers, clients or failures; show both identities.
-For shared upstream failure state across workers, consider `zone team1_pool 64k;`
+For shared upstream failure state across workers, consider `zone team1_pool 256k;`
 inside the upstream block, then `nginx -t` before reloading.
 
 HTTP caching here is client caching/conditional validation. The nginx config has
@@ -191,16 +191,19 @@ point of failure. Do not stop the whole Docker/edge host to demonstrate DNS fail
    standby cannot reach A. Record this temporary policy change and restore after
    migration. Vridhi's host will also legitimately reach its local B. Do the
    non-edge blocked-client test from Bineet against B, not from an edge host.
-5. Prime a real client's app.team1.test DNS cache with the old edge IP. Keep both
-   edges running. Change EDGE_IP in **both DNS hosts' Docker `.env` files** to the
-   standby IP; recreate DNS containers. Update both app and api consistently.
+5. Build the updated DNS image on both DNS hosts and verify UDP/TCP answers before
+   starting the timed test. Prime a real client's app.team1.test DNS cache with
+   the old edge IP. Keep both edges running. Run `sh set-edge-record.sh STANDBY_IP`
+   in docker-dns on both hosts. This updates app/api together without restarting
+   DNS. Keep `.env` EDGE_IP at the original address for this temporary experiment.
 6. A fresh lookup gets the standby IP. A previously cached client may still use
    the old IP until remaining TTL expires. Show remote IP and X-Edge in curl output
    and DNS logs, then show that client moving to the standby. Do not use --resolve
    in this DNS-based demonstration. Existing TCP connections may outlive DNS TTL:
    TTL expiration does not forcibly move established sessions.
-7. Restore both DNS EDGE_IP values to Anshuman's IP, recreate, verify clients
-   return, then restore the temporary isolation-policy exception. Keep old edge
+7. Run `sh set-edge-record.sh 10.7.31.231` on both DNS hosts to restore the current
+   original edge (substitute its new IP if DHCP changed). Verify clients return,
+   then restore the temporary isolation-policy exception. Keep old edge
    online for the TTL window; manual DNS cutover is not automatic edge failover.
 
 ## Extension F: diagnose out loud

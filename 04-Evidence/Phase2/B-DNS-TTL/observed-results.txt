@@ -1,0 +1,17 @@
+DNS TTL and manual cache flushing — observed 24 November 2026, IST
+
+TTL/cache experiment:
+- Client Bineet first received 10.7.31.231 at 23:33:39.
+- At 23:33:55 primary DNS returned 10.7.2.240 with advertised TTL 30 seconds.
+- Client still returned 10.7.31.231 at 23:34:14.
+- First sampled new client answer 10.7.2.240 appeared at 23:34:19.
+- These observations show cached old data despite a changed server answer, followed by the new answer. They do not establish an exact 30-second client cache lifetime; sample spacing and resolver behavior affect observed timing.
+
+Manual flush experiment:
+- At 23:36:31 client cache was primed with 10.7.2.240 following a flush.
+- At 23:36:34 the primary DNS record was restored to 10.7.31.231 (TTL 30).
+- Client manually flushed again, then received 10.7.31.231 at 23:36:45, only 14 seconds after priming and 11 seconds after the server change.
+- This demonstrates obtaining the changed answer after manual flushing without waiting for advertised TTL expiry.
+
+Only ttl-demo.team1.test was changed. app.team1.test and api.team1.test remained mapped to the primary nginx edge.
+Bineet temporarily used only primary DNS to isolate this experiment. Restore both project DNS addresses afterward.

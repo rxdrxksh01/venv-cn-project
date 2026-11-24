@@ -1,2 +1,6 @@
 .DS_Store
 **/.DS_Store
+**/*.key
+**/*.p12
+**/tls.pem
+03-Source-Code/edge/certs/

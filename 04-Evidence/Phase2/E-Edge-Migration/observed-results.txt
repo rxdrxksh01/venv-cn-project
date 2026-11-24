@@ -1,0 +1,15 @@
+Extension E evidence, 25 November 2026 IST.
+
+Preparation: standby nginx on Vridhi 10.7.2.240:443 was tested using --resolve, with certificate verification successful, HTTP/2 200, X-Edge edge-standby and backend A. This was a preparation test that bypassed DNS.
+
+Actual cutover: direct queries to both primary DNS 10.7.31.231 and backup DNS 10.7.2.240 showed app.team1.test A 10.7.2.240 with TTL 30. Bineet used ordinary HTTPS requests without --resolve or -k and recorded remote IP / X-Edge / HTTP status.
+- Last visible old-edge sample: 00:28:59, HTTP/2 200, X-Edge edge-mac2, Connected-IP 10.7.31.231.
+- First visible standby sample: 00:29:05, HTTP/2 200, X-Edge edge-standby, Connected-IP 10.7.2.240.
+- Subsequent visible samples at 00:29:10, :15 and :20 used standby and showed A/B responses.
+- Every visible request in the supplied loop screenshot returned HTTP/2 200.
+
+The DNS screenshot also includes a failed helper invocation from the home directory (00:27:57, script not found). That command did not change DNS; subsequent direct answers show the successful final DNS state. The exact time and invocation that changed each DNS server are not established by this screenshot. Do not infer an exact cache lifetime from the failed-command timestamp.
+
+This was a manual DNS cutover with both edges running, not automatic edge-failure detection. Both backend isolation rules were rolled back before this experiment, permitting the standby to reach the backends. Restoration of original DNS and resumption of Supportdesk remain to be confirmed.
+
+Restoration update: the supplied client screenshot shows HTTP/2 200, X-Edge edge-mac2, Connected-IP 10.7.31.231 after flushing. The user separately confirmed Vridhi stopped standby nginx and restarted supportdesk_nginx. This service restoration is user-confirmed, not independently inspected remotely.
