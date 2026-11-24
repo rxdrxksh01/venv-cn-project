@@ -5,6 +5,10 @@ through a private DNS server, an nginx TLS edge / load balancer and two REST bac
 
 Team name: **.venv** · private DNS zone: **team1.test** (the zone name used in all configs and evidence).
 
+**Phase 2 preparation:** [Phase 1 explanation and Phase 2 runbook](03-Source-Code/PHASE2-GUIDE.md)
+and [Docker DNS replacement / backup setup](03-Source-Code/docker-dns/README.md).
+The IPs and results below describe the historical Phase 1 deployment.
+
 | Machine | Member | Role | IP |
 |---|---|---|---|
 | Mac 1 | Rudraksh | Private DNS (dnsmasq) + test client | 10.7.6.171 |
